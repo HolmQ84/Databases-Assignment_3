@@ -1,0 +1,16 @@
+body {
+    font-family: Bahnschrift, sans-serif !important;
+    background-color: #89d6ff !important;
+    text-align: center !important;
+}
+
+h1, h3 {
+    padding-bottom: 2%;
+    padding-top: 3%;
+}
+
+nav {
+    background: rgb(255,188,0);
+    background: linear-gradient(90deg, rgba(255,188,0,1) 0%, rgba(147,114,21,1) 25%, rgba(2,0,36,1) 50%, rgba(9,9,121,1) 75%, rgba(0,212,255,1) 100%);
+    border-bottom: 1px solid black;
+}

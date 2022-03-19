@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/main.css}" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/city.css}" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>All cities</title>
+</head>
+<body>
+<h1>All Cities</h1>
+<div class="container">
+<table class="table">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>City Name</td>
+        <td>LatitudeX</td>
+        <td>Population</td>
+        <td>State</td>
+    </tr>
+    </thead>
+    <tr th:each="city : ${cities}">
+        <td th:text="${city.getId()}"></td>
+        <td th:text="${city.getCity()}"></td>
+        <td th:text="${city.getLatitude()}"></td>
+        <td th:text="${city.getPopulation()}"></td>
+        <td th:text="${city.getState()}"></td>
+    </tr>
+</table>
+    <h3><span>Total cities: </span><u><span th:text="${cities.size()}"></span></u></h3>
+</div>
+<br>
+
+</body>
+</html>

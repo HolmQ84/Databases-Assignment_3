@@ -1,0 +1,9 @@
+table tr td {
+    border: 2px solid black !important;
+}
+
+table thead tr td, .td_1 {
+    border: 2px solid black !important;
+    background-color: #3d3d3d;
+    color: white;
+}
