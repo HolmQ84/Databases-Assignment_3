@@ -5,6 +5,7 @@ import db.assignment_3.Repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,8 +28,8 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public String createCity(City city) {
-        return this.repo.save(city).getId();
+    public City createCity(City city) {
+        return this.repo.save(city);
     }
 
     @Override
@@ -48,5 +49,14 @@ public class CityServiceImpl implements CityService {
     @Override
     public void deleteCity(String reviewId) {
         this.repo.deleteById(reviewId);
+    }
+
+    public List<City> generateCities(int count) {
+        FakerCity fakerCity = new FakerCity();
+        List<City> cities = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            cities.add(fakerCity.createCity());
+        }
+        return this.repo.saveAll(cities);
     }
 }

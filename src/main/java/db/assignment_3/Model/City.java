@@ -14,7 +14,7 @@ public class City {
     private String id;
     private String city;
     @Field("loc")
-    private List<Float> latitude;
+    private List<Double> latitude;
     @Field("pop")
     private int population;
     private String state;

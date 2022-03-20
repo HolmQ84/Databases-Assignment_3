@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,6 @@ public class CityController {
         ModelAndView modelAndView = new ModelAndView("cities");
         List<City> cities = cityService.getCities();
         modelAndView.addObject("cities", cities);
-        System.out.println("getAllCities");
         return modelAndView;
     }
 
@@ -34,8 +34,12 @@ public class CityController {
     }
 
     @PostMapping("/")
-    public String createCity(@ModelAttribute City city) {
-        System.out.println("createCity - "+city);
+    public City createCity(@RequestBody City city) {
         return cityService.createCity(city);
+    }
+
+    @PostMapping("/generateCities/{count}")
+    public List<City> generateCities(@PathVariable int count) {
+        return cityService.generateCities(count);
     }
 }
