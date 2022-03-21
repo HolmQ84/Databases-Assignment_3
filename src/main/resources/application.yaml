@@ -3,8 +3,6 @@ server:
 spring:
   data:
     mongodb:
-      host: 192.168.0.41
-      port: 27017
-      database: databases
+      uri: 'mongodb://localhost:27020/data?retryWrites=false'
   application:
     name: SI-Exam-Monitor
