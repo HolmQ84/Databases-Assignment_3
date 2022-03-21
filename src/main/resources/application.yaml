@@ -3,8 +3,8 @@ server:
 spring:
   data:
     mongodb:
-      host: 192.168.0.41
+      host: 10.50.137.110
       port: 27017
-      database: databases
+      database: test
   application:
     name: SI-Exam-Monitor
