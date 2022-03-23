@@ -130,3 +130,28 @@ The value has been accumulated (aggregated) for the key values and the output is
     { "_id" : "Midhu", "value" : 243 }
 
 ![img_2.png](img_2.png)
+
+
+### Provide top 10 recorded out of the sorted result. We used aggregate
+
+
+    db.tweets.aggregate({$sort:{"_id":-1}}, 
+    {$match: {"entities.hashtags.text":{$exists:true}}},
+    {$limit:1000},{$unwind:"$entities.hashtags"},
+    {$project : {"entities.hashtags.text":1,"_id":1}},
+    {$group:{"_id":{$toLower:"$entities.hashtags.text"},
+    count : { $sum : 1 }}}, {$sort:{"count":-1}}, {$limit:10})
+
+
+Output:
+    
+    { _id: 'angularjs', count: 29 }
+    { _id: 'nodejs', count: 29 }
+    { _id: 'fcblive', count: 27 }
+    { _id: 'javascript', count: 22 }
+    { _id: 'lfc', count: 19 }
+    { _id: 'globalmoms', count: 19 }
+    { _id: 'webinar', count: 18 }
+    { _id: 'espanyolfcb', count: 18 }
+    { _id: 'iwci', count: 17 }
+    { _id: 'job', count: 13 }
