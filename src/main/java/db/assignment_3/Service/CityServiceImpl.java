@@ -1,5 +1,6 @@
 package db.assignment_3.Service;
 
+import com.google.gson.JsonArray;
 import db.assignment_3.Model.City;
 import db.assignment_3.Repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;

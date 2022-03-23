@@ -1,7 +1,10 @@
 package db.assignment_3.Controller;
 
+import com.google.gson.JsonArray;
 import db.assignment_3.Model.City;
+import db.assignment_3.Repository.TweetRepository;
 import db.assignment_3.Service.CityService;
+import db.assignment_3.Service.TweetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +19,9 @@ public class CityController {
 
     @Autowired
     CityService cityService;
+
+    @Autowired
+    TweetService tweetService;
 
     @GetMapping("/")
     public ModelAndView getAllCities() {
@@ -41,5 +47,16 @@ public class CityController {
     @PostMapping("/generateCities/{count}")
     public List<City> generateCities(@PathVariable int count) {
         return cityService.generateCities(count);
+    }
+
+    @GetMapping("/top10cities")
+    public List<City> top10cities() {
+        List<City> cities = cityService.getCities();
+        return cities.subList(0,10);
+    }
+
+    @GetMapping("/top10")
+    public List<JsonArray> top10tweets() {
+        return tweetService.top10tweets();
     }
 }
